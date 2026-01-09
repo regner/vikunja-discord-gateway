@@ -1,0 +1,99 @@
+@HostAddress = http://localhost:5000
+
+### Task created
+
+POST {{HostAddress}}/webhook
+Content-Type: application/json
+
+{
+  "event_name": "task.created",
+  "data": {
+    "task": {
+      "title": "another",
+      "id": 27,
+      "project_id": 1
+    },
+    "doer": {
+      "name": "Some User"
+    }
+  }
+}
+
+### Task deleted
+
+POST {{HostAddress}}/webhook
+Accept: application/json
+Content-Type: application/json
+
+{
+  "event_name": "task.deleted",
+  "data": {
+    "task": {
+      "title": "another",
+      "id": 27,
+      "project_id": 1
+    },
+    "doer": {
+      "name": "Some User"
+    }
+  }
+}
+
+### Task assigned
+
+POST {{HostAddress}}/webhook
+Accept: application/json
+Content-Type: application/json
+
+{
+  "event_name": "task.assignee.created",
+  "data": {
+    "task": {
+      "title": "another",
+      "id": 27,
+      "project_id": 1
+    },
+    "doer": {
+      "name": "Some User"
+    }
+  }
+}
+
+### Task unassigned
+
+POST {{HostAddress}}/webhook
+Accept: application/json
+Content-Type: application/json
+
+{
+  "event_name": "task.assignee.deleted",
+  "data": {
+    "task": {
+      "title": "another",
+      "id": 27,
+      "project_id": 1
+    },
+    "doer": {
+      "name": "Some User"
+    }
+  }
+}
+
+### Comment added
+
+POST {{HostAddress}}/webhook
+Accept: application/json
+Content-Type: application/json
+
+{
+  "event_name": "task.comment.created",
+  "data": {
+    "task": {      "title": "another",
+      "id": 27,
+      "project_id": 1
+    },
+    "doer": {
+      "name": "Some User"
+    }
+  }
+}
