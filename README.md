@@ -1,5 +1,8 @@
 ﻿# Vikunja Discord Gateway
 
+This is a super simple service that takes [Vikunja](https://github.com/go-vikunja/vikunja)
+webhook events and sends them to a Discord webhook.
+
 ## Deployment
 
 ### Docker
