@@ -13,13 +13,28 @@ WebApplication app = builder.Build();
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
 var config = app.Services.GetRequiredService<IOptions<Config>>().Value;
 
-if (config.Projects == null)
+if (config.Projects == null || config.Projects.Count == 0)
 {
     throw new InvalidOperationException("Configuration Error: Must supply at least one project.");
 }
 
+if (config.Webhooks == null || config.Webhooks.Count == 0)
+{
+    throw new InvalidOperationException("Configuration Error: Must supply at least one webhook.");
+}
+
 foreach (KeyValuePair<int, ProjectConfig> project in config.Projects)
 {
+    if (string.IsNullOrEmpty(project.Value.Name))
+    {
+        throw new InvalidOperationException($"Project with ID {project.Key} has no name configured.");
+    }
+    
+    if (string.IsNullOrEmpty(project.Value.Webhook))
+    {
+        throw new InvalidOperationException($"Project with ID {project.Key} has no webhook configured.");
+    }
+    
     if (!config.Webhooks.ContainsKey(project.Value.Webhook))
     {
         throw new InvalidOperationException(
