@@ -14,7 +14,7 @@ docker run -d \
   -e VIKUNJADISCORDGATEWAY__WEBHOOKS__DEFAULT=https://discord.com/ \
   -e VIKUNJADISCORDGATEWAY__PROJECTS__1__NAME=MyProject \
   -e VIKUNJADISCORDGATEWAY__PROJECTS__1__WEBHOOK=Default \
-  -p 5000:5000 \
+  -p 8080:8080 \
   ghcr.io/regner/vikunja-discord-gateway:latest
 ```
 
