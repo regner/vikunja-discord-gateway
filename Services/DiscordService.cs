@@ -22,7 +22,7 @@ public class DiscordService(HttpClient httpClient, IOptions<Config> config, ILog
 
         if (_config.VikunjaUrl != null)
         {
-            Uri vikunjaUrl = new Uri(_config.VikunjaUrl, payload.Task.Id.ToString());
+            Uri vikunjaUrl = new Uri(_config.VikunjaUrl, $"tasks/{payload.Task.Id.ToString()}");
 
             description += $"\n\n[View Task]({vikunjaUrl})";
         }
